@@ -21,6 +21,22 @@ export function numberMap(arr) {
     return arr.map(el => Number(el));
 }
 
+/**
+ * Computes the frequency of each element in the array
+ * @param {Array<any>} array 
+ * @returns {Object<key, count:Number> } frequency map
+ */
+export function computeFrequency(array) {
+    const freq = {};
+    array.forEach(item => {
+        if (!freq.hasOwnProperty(item)) {
+            freq[item] = 0;
+        }
+        freq[item] +=1;
+    });
+    return freq;
+}
+
 export function zip(arr1, arr2) {
     if (arr1.length !== arr2.length) throw Error("Can't zip arrays with different lengths");
     return arr1.map((e,i) => [e, arr2[i]]);
