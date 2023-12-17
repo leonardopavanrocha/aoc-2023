@@ -7,7 +7,31 @@ export function readLines(path) {
     return createInterface({input: fileStream, crlfDelay: Infinity});
 }
 
-export const directions = [[-1,0], [1,0], [1,1], [-1,1], [0,1], [0,-1], [-1,-1], [1,-1]];
+export const simpleDirections = [[-1,0], [1,0], [0,-1], [0,1]];
+export const directions = simpleDirections.concat([[1,1], [-1,1], [-1,-1], [1,-1]]);
+
+
+export function findItemInGrid(grid, item) {
+    let coords;
+    grid.forEach((row, i) => {
+        row.forEach((col, j) => {
+            if (item === col) {
+                coords = [i,j];
+            }
+        })
+    });
+    return coords;
+}
+
+export function gridPrettyPrint(grid) {
+    grid.forEach((row, i) => {
+        console.log(row.map((col, j) => grid[i][j] ).join(" "));
+    });
+}
+
+export function outsideBoundaries(grid, [x,y]) {
+    return x >= grid.length || x < 0 || y < 0 || y >= grid[0].length
+}
 
 export function sum(arr) {
     return arr.reduce((total, item) => total + item, 0);
