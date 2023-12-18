@@ -46,6 +46,26 @@ export function numberMap(arr) {
 }
 
 /**
+ * Returns the manhattan distance between two points
+ * @param { Point } p0 
+ * @param { Point } p1 
+ * @returns { Number } distance
+ */
+export function manhattanDistance(p0, p1) {
+    return Math.abs(p0[0] - p1[0]) + Math.abs(p1[1] - p0[1]);
+}
+
+/**
+ * Returns the euclidean distance between two points
+ * @param { Point } p0 
+ * @param { Point } p1 
+ * @returns 
+ */
+export function euclideanDistance(p0, p1) {
+    return Math.sqrt((p0[0]- p1[0])**2 + (p0[1] - p1[1])**2);
+}
+
+/**
  * Computes the frequency of each element in the array
  * @param {Array<any>} array 
  * @returns {Object<key, count:Number> } frequency map
@@ -106,6 +126,10 @@ export function mergeRanges(ranges) {
 
 /**
  * @typedef {[Number, Number]} Range
+ */
+
+/**
+ * @typedef {[Number, Number]} Point
  */
 
 export function gcd(a, b) {
