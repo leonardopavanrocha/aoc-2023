@@ -139,3 +139,16 @@ export function gcd(a, b) {
 export function lcm(a, b) {
     return a * b / gcd(a, b);
 }
+
+export function memoize(fn) {
+    const cache = new Map();
+    return function memoized () {
+        const key = JSON.stringify(arguments);
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+        const res = fn(...arguments);
+        cache.set(key, res);
+        return res;
+    }
+}
