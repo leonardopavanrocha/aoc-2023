@@ -33,6 +33,14 @@ export function transpose(matrix) {
     return matrix[0].map((col, c) => matrix.map((row, r) => matrix[r][c]));
 }
 
+export function rotate(matrix, clockwise=true) {
+    if (clockwise) {
+        return matrix[0].map((val, index) => matrix.map(row => row[index]).reverse())
+    } else {
+        return matrix[0].map((val, index) => matrix.map(row => row[row.length-1-index]));
+    }
+}
+
 export function outsideBoundaries(grid, [x,y]) {
     return x >= grid.length || x < 0 || y < 0 || y >= grid[0].length
 }
