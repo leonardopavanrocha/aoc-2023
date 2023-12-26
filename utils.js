@@ -164,3 +164,17 @@ export function memoize(fn) {
         return res;
     }
 }
+
+export async function buildHashMapGrid(lines) {
+    const grid = new Map();
+    let row = 0;
+    for await (const line of lines) {
+        line.split("").forEach((el, i) => {
+            const rowSet = grid.has(row) ? grid.get(row) : new Map();
+            rowSet.set(i, el);
+            grid.set(row, rowSet);
+        });
+        row++;
+    }
+    return grid;
+}
